@@ -17,6 +17,13 @@ const menu = [
 menu.sort((a, b) => a.category.localeCompare(b.category));
 
 
+function search(){
+  const searchTerm = document.getElementById('inputBox').value.toLowerCase();
+  const filteredMenu = menu.filter(item => item.title.toLowerCase().includes(searchTerm));
+  generateMenuHTML(filteredMenu);
+}
+
+
 function generateMenuHTML(filteredMenu) {
   const menuContainer = document.getElementById('menuItems');
   menuContainer.innerHTML = '';
