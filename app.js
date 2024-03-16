@@ -48,7 +48,8 @@ function filterMenu(category) {
   generateMenuHTML(filteredMenu);
 }
 
-function search(){
+function search(event){
+  event.preventDefault();
   const searchTerm = document.getElementById('inputBox').value.toLowerCase();
   const filteredMenu = menu.filter(item => item.title.toLowerCase().includes(searchTerm));
   generateMenuHTML(filteredMenu);
