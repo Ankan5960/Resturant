@@ -128,7 +128,7 @@ function generateMenuHTML(filteredMenu) {
     }
     ShortDes+='...';
     const menuItemHTML = `
-      <div class="mb-4" >
+      <div class="menu-item mb-4">
       <div class="card" style="width: 18rem; margin:10px; ">
             <img class="card-img-top" src="${item.img}" style="height: 190px; width: 286px;" alt="${item.title}">
             <div class="card-body" >
@@ -136,7 +136,7 @@ function generateMenuHTML(filteredMenu) {
               <p class="card-text" style="color: green; "><strong>${item.price}</strong></p>
               
               <p class="card-text" id="description_${item.id}" styie="text-align: justify;">
-                <span class="old-description" id>${ShortDes}</span>
+                <span class="short-description" id>${ShortDes}</span>
                 <span class="full-description" style="display: none;">${item.description}</span>
                 <button class="btn btn-link read-more" style="display: inline; font-size: small; padding: 0%; " onclick="toggleDescription(${item.id})">Read more</button>
               </p>
@@ -147,21 +147,6 @@ function generateMenuHTML(filteredMenu) {
       </div>
     `;
 
-    function toggleDescription(cardNumber) {
-      var preview = document.querySelector(".preview");
-      var full = document.querySelector(".full");
-      var button = document.querySelector("button");
-
-      if (full.classList.contains("hide")) {
-        preview.classList.add("hide");
-        full.classList.remove("hide");
-        button.textContent = "Read less";
-      } else {
-        preview.classList.remove("hide");
-        full.classList.add("hide");
-        button.textContent = "Read more";
-      }
-    }
     menuContainer.innerHTML += menuItemHTML;
   });
 }
@@ -170,9 +155,7 @@ generateMenuHTML(menu);
 
 function filterMenu(category) {
   const filteredMenu =
-    category === "all"
-      ? menu
-      : menu.filter((item) => item.category === category);
+    category === "all" ? menu : menu.filter((item) => item.category === category);
   generateMenuHTML(filteredMenu);
 }
 
@@ -187,22 +170,32 @@ function search(event) {
 
 function toggleDescription(itemId) {
   const descriptionContainer = document.getElementById(`description_${itemId}`);
-  const fullDescription =
-    descriptionContainer.querySelector(".full-description");
-  const oldDes = descriptionContainer.querySelector(".old-description");
+  const fullDescription =descriptionContainer.querySelector(".full-description");
+  const shortDescription = descriptionContainer.querySelector(".short-description");
   const readMoreButton = descriptionContainer.querySelector(".read-more");
 
   if (fullDescription.style.display === "none") {
     // Display full description and change button text to "Read less"
     fullDescription.style.display = "inline";
-    oldDes.style.display = "none";
+    shortDescription.style.display = "none";
     readMoreButton.textContent = "Read less";
     readMoreButton.style.display = "inline";
   } else {
     // Hide full description and change button text to "Read more"
     fullDescription.style.display = "none";
-    oldDes.style.display = "inline";
+    shortDescription.style.display = "inline";
     readMoreButton.textContent = "Read more";
     readMoreButton.style.display = "inline";
   }
 }
+
+function responsive(){
+  const wdith=window.innerWidth;
+  const  card=document.getElementById('menuItems');
+  if(wdith<=980 && wdith>=1000){
+    card.style.wdith='100px';
+  }
+  console.log(wdith);
+}
+
+responsive();
