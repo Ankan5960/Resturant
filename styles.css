@@ -10,7 +10,7 @@ body{
 }
 
 .video-container{
-    width: 80%;
+    width: 98%;
     display: flex;
     margin:1rem auto;
 }
@@ -20,10 +20,9 @@ body{
     border:2px solid rgb(182, 179, 179);
     overflow: hidden; /* This ensures that the video does not spill outside the circular shape */
     width: 100%; /* Adjust as needed */
-    height: 300px; /* Adjust as needed */
-     margin:0 auto;
-     justify-content: center;
-     
+    height: 400px; /* Adjust as needed */
+    margin:0;
+    justify-content: center;
     object-fit: cover; /* This controls how the video should be resized to fit its container */
     margin-top: 1rem;
 }
