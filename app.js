@@ -112,6 +112,13 @@ const menu = [
   },
 ];
 
+async function getmenu(name){
+  const response=await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+  var data=await response.json();
+
+  console.log(data);
+}
+
 menu.sort((a, b) => a.category.localeCompare(b.category));
 
 function generateMenuHTML(filteredMenu) {
@@ -199,3 +206,4 @@ function responsive(){
 }
 
 responsive();
+
